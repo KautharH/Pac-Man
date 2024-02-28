@@ -54,6 +54,16 @@ class GameBoard {
                     board.createGrid(level);
                     return board;
                 }
+                static createGameBoard(DOMGrid, level) {
+                    const board = new this(DOMGrid);
+                    board.createGrid(level);
+                    return board;
+                }
+                static createGameBoard(DOMGrid, level) {
+                    const board = new this(DOMGrid);
+                    board.createGrid(level);
+                    return board;
+                }
     }
 
     export default GameBoard;
