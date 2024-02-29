@@ -6,13 +6,13 @@ class Pacman {
         this.speed = speed;
         this.dir = null;
         this.timer = 0;
-        this.powerPill = flase;
+        this.powerPill = false;
         this.rotation = true;
 
     }
 
     shouldMove() {
-        if (!this.dir) return flase;
+        if (!this.dir) return false;
         if (this.timer === this.speed) {
             this.timer = 0;
             return true;
@@ -54,7 +54,11 @@ class Pacman {
         }
     
         const nextMovePos = this.pos + dir.movement;
-        if (objectExist(nextMovePos, OBJECT_TYPE.WALL)) return;
+        if (
+            objectExist(nextMovePos, OBJECT_TYPE.WALL) || 
+            objectExist(nextMovePos, OBJECT_TYPE.GHOSTLAIR)
+        ) 
+            return;
         this.dir = dir;
     }
     
