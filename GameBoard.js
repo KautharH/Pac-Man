@@ -12,6 +12,7 @@ class GameBoard {
         div.classList.add('game-status');
         div.innerHTML = `${gameWin ? 'WIN!' : 'GAME OVER!'}`
         this.DOMGrid.appendChild(div);
+    }
 
     //method creating grid 
     createGrid(level) {
@@ -41,7 +42,7 @@ class GameBoard {
 
         }
 
-        objectExists(pos, object) { 
+        objectExist(pos, object) { 
             return this.grid[pos].classList.contains(object);
         }
 
@@ -49,11 +50,11 @@ class GameBoard {
             this.grid[pos].style.transform = `rotate(${deg}deg)`;
         }
 
-                // static createGameBoard(DOMGrid, level) {
-                //     const board = new this(DOMGrid);
-                //     board.createGrid(level);
-                //     return board;
-                // }
+        static createGameBoard(DOMGrid, level) {
+            const board = new this(DOMGrid);
+            board.createGrid(level);
+            return board;
+        }        
                 
     }
 
