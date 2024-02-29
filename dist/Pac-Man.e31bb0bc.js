@@ -329,8 +329,8 @@ var GameBoard = /*#__PURE__*/function () {
       (_this$grid$pos$classL2 = this.grid[pos].classList).remove.apply(_this$grid$pos$classL2, (0, _toConsumableArray2.default)(classes));
     }
   }, {
-    key: "objectExists",
-    value: function objectExists(pos, object) {
+    key: "objectExist",
+    value: function objectExist(pos, object) {
       return this.grid[pos].classList.contains(object);
     }
   }, {
@@ -402,7 +402,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50711" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59138" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
