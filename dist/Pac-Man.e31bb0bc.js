@@ -627,7 +627,7 @@ function gameLoop(pacman, ghosts) {
     score += 10;
   }
 
-  //check og pacman eats a powerpill
+  //check if pacman eats a powerpill
   if (gameBoard.objectExist(pacman.pos, _setup.OBJECT_TYPE.PILL)) {
     gameBoard.removeObject(pacman.pos, [_setup.OBJECT_TYPE.PILL]);
     pacman.powerPill = true;
