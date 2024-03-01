@@ -1,7 +1,9 @@
 import { LEVEL, OBJECT_TYPE } from "./setup";
+import { randomMovement } from "./ghostMoves";
 //Classes
 import GameBoard from "./GameBoard";
 import Pacman from "./Pacman";
+import Ghost from "./Ghost";
 
 //DOM elements 
 const gameGrid = document.querySelector('#game');
@@ -46,6 +48,13 @@ function startGame() {
     document.addEventListener('keydown', (e) =>
         pacman.handleKeyInput(e, gameBoard.objectExist)
     );
+
+    const ghost = [
+        new Ghost(5, 188, randomMovement, OBJECT_TYPE.BLINKY),
+        new Ghost(4, 209, randomMovement, OBJECT_TYPE.PINKY),
+        new Ghost(3, 230, randomMovement, OBJECT_TYPE.INKY),
+        new Ghost(2, 251, randomMovement, OBJECT_TYPE.CLYDE),
+    ]
 
     timer = setInterval( () => gameLoop(pacman), GLOBAL_SPEED);
 }
