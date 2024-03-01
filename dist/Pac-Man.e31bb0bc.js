@@ -624,7 +624,7 @@ function gameLoop(pacman, ghosts) {
   if (gameBoard.objectExist(pacman.pos, _setup.OBJECT_TYPE.DOT)) {
     gameBoard.removeObject(pacman.pos, [_setup.OBJECT_TYPE.DOT]);
     gameBoard.dotCount--;
-    score = +10;
+    score += 10;
   }
 
   //check og pacman eats a powerpill
@@ -652,6 +652,9 @@ function gameLoop(pacman, ghosts) {
     gameWin = true;
     gameOver(pacman, ghosts);
   }
+
+  //Show score table
+  scoreTable.innerHTML = score;
 }
 function startGame() {
   gameWin = false;
