@@ -88,7 +88,13 @@ function gameLoop(pacman, ghosts) {
     if(pacman.powerPill !== powerPillActive) {
         powerPillActive = pacman.powerPill;
         ghosts.forEach((ghost) => (ghost.isScared = pacman.powerPill));
-        
+
+    }
+    
+    //Check if all dots have been eaten
+    if(gameBoard.dotCount === 0) {
+        gameWin = true;
+        gameOver(pacman, ghosts);
     }
 
 }
