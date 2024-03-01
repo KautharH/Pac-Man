@@ -514,7 +514,8 @@ var Ghost = /*#__PURE__*/function () {
     this.startPos = startPos;
     this.pos = startPos;
     this.dir = _setup.DIRECTIONS.ArrowRight;
-    this.speed = 0;
+    this.speed = speed;
+    this.timer = 0;
     this.isScared = false;
     this.rotation = false;
   }
@@ -588,9 +589,29 @@ var gameWin = false;
 var powerPillActive = false;
 var powerPillTimer = null;
 function gameOver(pacman, grid) {}
-function checkCollision(pacman, ghosts) {}
+function checkCollision(pacman, ghosts) {
+  var collidedGhost = ghosts.find(function (ghost) {
+    return pacman.pos === ghost.pos;
+  });
+  if (collidedGhost) {
+    if (pacman.powerPill) {
+      gameBoard.removeObject(collidedGhost.pos, [_setup.OBJECT_TYPE.GHOST, _setup.OBJECT_TYPE.SCARED, collidedGhost.name]);
+      collidedGhost.pos = collidedGhost.startPos;
+      score += 100;
+    } else {
+      gameBoard.removeObject(pacman.pos, [_setup.OBJECT_TYPE.PACMAN]);
+      gameBoard.rotateDiv(pacman.pos, 0);
+      gameOver(pacman, gameGrid);
+    }
+  }
+}
 function gameLoop(pacman, ghosts) {
   gameBoard.moveCharacter(pacman);
+  checkCollision(pacman, ghosts);
+  ghosts.forEach(function (ghost) {
+    return gameBoard.moveCharacter(ghost);
+  });
+  checkCollision(pacman, ghosts);
 }
 function startGame() {
   gameWin = false;
@@ -602,13 +623,13 @@ function startGame() {
   document.addEventListener('keydown', function (e) {
     return pacman.handleKeyInput(e, gameBoard.objectExist);
   });
-  var ghost = [new _Ghost.default(5, 188, _ghostMoves.randomMovement, _setup.OBJECT_TYPE.BLINKY), new _Ghost.default(4, 209, _ghostMoves.randomMovement, _setup.OBJECT_TYPE.PINKY), new _Ghost.default(3, 230, _ghostMoves.randomMovement, _setup.OBJECT_TYPE.INKY), new _Ghost.default(2, 251, _ghostMoves.randomMovement, _setup.OBJECT_TYPE.CLYDE)];
+  var ghosts = [new _Ghost.default(5, 188, _ghostMoves.randomMovement, _setup.OBJECT_TYPE.BLINKY), new _Ghost.default(4, 209, _ghostMoves.randomMovement, _setup.OBJECT_TYPE.PINKY), new _Ghost.default(3, 230, _ghostMoves.randomMovement, _setup.OBJECT_TYPE.INKY), new _Ghost.default(2, 251, _ghostMoves.randomMovement, _setup.OBJECT_TYPE.CLYDE)];
   timer = setInterval(function () {
-    return gameLoop(pacman);
+    return gameLoop(pacman, ghosts);
   }, GLOBAL_SPEED);
 }
 
-// Initialise ganme 
+// Initialise game 
 startButton.addEventListener('click', startGame);
 },{"./setup":"setup.js","./ghostMoves":"ghostMoves.js","./GameBoard":"GameBoard.js","./Pacman":"Pacman.js","./Ghost":"Ghost.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

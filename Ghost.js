@@ -7,7 +7,8 @@ class Ghost {
         this.startPos = startPos;
         this.pos = startPos;
         this.dir = DIRECTIONS.ArrowRight;
-        this.speed = 0;
+        this.speed = speed;
+        this.timer = 0;
         this.isScared = false;
         this.rotation = false;
     }
@@ -19,7 +20,7 @@ class Ghost {
 
         }
 
-        this.timer ++
+        this.timer++;
         return false;
     }
 
