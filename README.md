@@ -9,17 +9,17 @@ This project revolves around the development of a variant of the iconic Pac-Man 
 
 ### 1c. Innitial Plan and Design Approach.
 
-This project adopts the Model/View/Controller (MVC) architectural pattern to structure the Pacman game. The MVC pattern aids in separating concerns, allowing for more manageable code, easier maintenance, and the flexibility to extend the game with new features. Below, we detail the roles each component plays within our game architecture and how they interact to deliver a seamless and engaging gaming experience.
+This project adopts the Model/View/Controller (MVC) architectural pattern to structure the Pacman game. The MVC pattern aids in separating concerns, allowing for more manageable code, easier maintenance, and the flexibility to extend the game with new features. Detailed below are the roles each component plays within the game architecture and how they interact to deliver a seamless and engaging gaming experience.
 
 #### Model
-The Model component acts as the heart of our game's logic and state. It is responsible for maintaining the game's dynamic data structure and the rules that govern changes to this structure. Within the Model, key classes include:
+The Model component acts as the heart of the game's logic and state. It is responsible for maintaining the game's dynamic data structure and the rules that govern changes to this structure. Within the Model, key classes include:
 
 GameBoard: Represents the game grid where Pacman and ghosts move. It is responsible for tracking the positions of all game objects, including walls, dots, power pills, and characters.
 Index: Serves as an entry point for game initialization, setting up the game board and populating it with dots, walls, and characters based on predefined level layouts.
 These objects are instantiated and structured through their respective constructors during the game's initialization phase. The Model ensures that the game state is always current, reflecting the results of player interactions and game logic.
 
 #### View
-The View component is tasked with rendering the game state to the player. It listens for changes in the Model and updates the visual representation of the game accordingly. In our implementation, the main game loop acts as part of the View, determining which objects to draw and refresh on the screen. This includes drawing the game board, Pacman, ghosts, and updating scores and game status messages.
+The View component is tasked with rendering the game state to the player. It listens for changes in the Model and updates the visual representation of the game accordingly. In this implementation, the main game loop acts as part of the View, determining which objects to draw and refresh on the screen. This includes drawing the game board, Pacman, ghosts, and updating scores and game status messages.
 
 The separation of the View from the game logic allows for a clear distinction between how the game works and how it is presented, facilitating potential future enhancements such as supporting different rendering technologies or user interfaces.
 
@@ -27,6 +27,12 @@ The separation of the View from the game logic allows for a clear distinction be
 The Controller component mediates input from the player, translating it into actions that modify the Model. It houses classes responsible for character movements, collision detection, and game state transitions. These include:
 
 Pacman: Handles input for Pacman's movement, ensuring it follows the game rules for navigation and interactions (e.g., eating dots or power pills).
-Ghost: Manages the AI for ghost movements, dictating their behavior based on the game state (e.g., chasing Pacman or fleeing when vulnerable).
-Controllers modify attributes within the Model to reflect the current game state, ensuring the Model and View remain synchronized. This separation of concerns allows for the independent development and testing of game logic and player interactions.
+GhostMoves: Manages the ghost movements, dictating their behavior based on the game state (e.g., chasing Pacman or fleeing when vulnerable).
+Controllers modify attributes within the Model to reflect the current game state, ensuring the Model and View remain synchronised. This separation of concerns allows for the independent development and testing of game logic and player interactions.
+
+### 1d. Tasks Breakdown.
+In managing the Pacman game project, I employed Trello as a central tool for task organization and team coordination. The Trello board for the project was meticulously organized into four distinct columns: "To Do", "In Progress", "In Review", and "Done!" This setup allowed for a clear and dynamic representation of the project's workflow. Each task, whether it involved initial design decisions, coding specific game features, or conducting thorough testing, was added as a card under the appropriate column. As tasks progressed, they were moved from "To Do" to "In Progress", then "In Review" for quality checks, and finally to "Done!" upon completion. This visual progression on the Trello board not only facilitated an effective tracking mechanism but also fostered a sense of achievement as tasks visibly moved towards completion. 
+Below is a screenshot of my Trello board showing some of my tasks. 
+
+![Alt text](image.png)
 
